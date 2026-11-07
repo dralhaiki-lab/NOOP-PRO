@@ -222,7 +222,7 @@ jobs:
           }
           # Preserve the requested App Group in a replaceable ad-hoc signature so the sideloader
           # provisions the shared container instead of treating both executables as entitlement-free.
-          Tools/prepare-ios-sideload-app.sh "$APP"
+          bash Tools/prepare-ios-sideload-app.sh "$APP"
           rm -rf Payload && mkdir Payload && cp -R "$APP" Payload/
           zip -qr "NOOP-ios-unsigned-v${VER}.ipa" Payload
           gh release upload "${{ needs.meta.outputs.tag }}" "NOOP-ios-unsigned-v${VER}.ipa" --repo "$GITHUB_REPOSITORY" --clobber
